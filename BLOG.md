@@ -65,8 +65,8 @@ There were many approaches that seemed to work when we were dealing with just a 
 The result was to setup and instance of the player including all parameters and transformations done explicitly through JavaScript, as adding a mix of JS and inline to the player created issues. We then used data attributes to set the poster and source on click of the desired item, the poster also had to be set before the video source or it would not work.
 Fortunately I had the privilege of working hands on with Becky to get through these issues, two minds are always better than one when it comes to problem solving. we now have a modal based player that loads videos on demand and is scalable for any number of videos. ”  Sean Massa from Moonstone
 
-## Workflow
 
+## working with agency that supports cloudinary website
 
 ## script to create transformations
 
