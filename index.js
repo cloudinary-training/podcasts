@@ -12,7 +12,7 @@ function explictHDProfile(publicId) {
       },
       {
         format: "mp4",
-        transformation: [{ audio_frequency: 44100 }, { video_codec: "h265" }],
+        transformation: [{ audio_frequency: 44100 }, { video_codec: "h264" }],
       },
       {
         format: "m3u8",
@@ -21,7 +21,7 @@ function explictHDProfile(publicId) {
     ],
     eager_async: true,
     eager_notification_url:
-      "https://webhook.site/20d13ebe-105c-4f04-9719-7e1e55f6ad94",
+      "https://webhook.site",
     type: "upload",
     invalidate: true,
   };
