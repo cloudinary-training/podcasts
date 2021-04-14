@@ -4,7 +4,9 @@
 
 [Podcast Website](https://cloudinary.com/podcasts)
 
-This is a story about using your company's product to solve your organization's problem. "Drinking Our Own Champagne" refers to our use of the Cloudinary Video Player to serve videos created by the training organization. Using your company's software in-house was made famous by Microsoft's use of the term "Eating your own dog food". Microsoft used this term because they were asking employees to use alpha and beta versions of their products. In this story, we are using production Video Player code.
+This is a story about using your company's product because a) it helps you solve an internal business problem and b) you like it! 
+
+"Drinking Our Own Champagne" refers to our use of the Cloudinary Video Player to serve videos created by the training organization. Using your company's software in-house was made famous by Microsoft's use of the term ["Eating your own dog food"](https://en.wikipedia.org/wiki/Eating_your_own_dog_food). Microsoft used this term because they were asking employees to use alpha and beta versions of their products. In this story, we are using production Video Player code.
 
 ## Podcasts
 
@@ -252,4 +254,6 @@ jQuery(document).ready(function () {
 Page styling is very important in setting up this "multi video player" web page.  The sample code uses limited styling.  An important point is to be careful with setting `max-width` on the `video` tag or `video-wrapper` as this can interfere with full screen functionality.
 
 
-## web page to test
+## Summary
+
+There's always a next step in web page development, but its nice to reach a milestone where you can feel confident about a workflow and then focus on the contents of the work.  As more websites embrace video content, we look forward to learning an sharing techniques that enhance the User Experience.
