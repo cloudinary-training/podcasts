@@ -2,6 +2,8 @@
 
 ## Run Explicit Eager to produce ABS derivatives
 
+Create a .env file and paste your CLOUDINARY_URL in it.
+
 ```JavaScript
 node index.js
 ```

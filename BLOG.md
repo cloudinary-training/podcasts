@@ -1,4 +1,5 @@
-# "Drinking Our Own Champagne" with Cloudinary Video Player
+# "Drinking Our Own Champagne" 
+## With Cloudinary Video Player
 
 [Code Repo](https://github.com/cloudinary-training/podcasts)
 
@@ -16,7 +17,7 @@ The video podcasts are about an hour in length. We provide access to this conten
 
 ### Creating a Good User Experience with the Podcasts
 
-Since we have web page on the cloudinary.com website devoted to podcasts, we want to make the User Experience as delightful as possible. We address this on 2 fronts:
+Since we have a web page on the cloudinary.com website devoted to podcasts, we want to make the User Experience as delightful as possible. We address this on 2 fronts:
 
 1. Video streaming using Adaptive Bitrate Streaming (ABS) to achieve low latency and no buffering
 
@@ -85,27 +86,27 @@ Creating, editing, uploading and transforming the videos for the podcasts are ha
 By modularizing this workflow, we are able to let different people work on different aspects of the final product. The five step process is described below.
 
 1. The video is recorded using [Zoom Record](https://support.zoom.us/hc/en-us/sections/200208179-Recording).
-1. Next, the video is processed by [Descript](https://www.descript.com/), a tools that aids in cleaning up and transcribing the language used.
+1. Next, the video is processed by [Descript](https://www.descript.com/), a tool that aids in cleaning up and transcribing the language used.
 1. The video is then enhanced with visuals in a post processing phase. Once the video is ready it is uploaded as an `mp4` to Cloudinary.
 1. Once the video is in Cloudinary, a script can be run to create the transformations (chunking and audio syncing) that prepares the video for streaming to the Video Player.
 1. After the derived video files have been created, the public id is handed off to the web developers at the A[Moonstone Interactive](https://www.msinteractive.com/) that works on the website.
 
-We'll look at the code used to created the derived video chunks and the code used to render the video player in the next sections.
+We'll look at the code used to create the derived video chunks and the code used to render the video player in the next sections.
 
 ## Script to Create Derived Video for Use with ABS
 
 The script shown below is used to create derived assets that can be requested by the Video Player to enable Adaptive Bitrate Streaming.
 
-The code is setup as a function that accepts the Cloudinary public ID for the original video that was uploaded.
+The code is set up as a function that accepts the Cloudinary public ID for the original video that was uploaded.
 
-The function specifies and `eager` transformation. As mentioned earlier, `eager` transformations are those that can be applied to assets that are already uploaded, as opposed to on-the-fly transformations that are apply to the original uploaded asset. Eager transformations can by synchronous or asynchronous. Processing an hour long video takes time and many derived videos files are created, so it makes sense for this to be asynchronous. In order to be notified that the entire process is complete, the `eager_notification_url` key is set with a website that can capture and report such notifications. [webhook.site](https://webhook.site) is a website that can capture and report such notifications and its free to use.
+The function specifies an `eager` transformation. As mentioned earlier, `eager` transformations are those that can be applied to assets that are already uploaded, as opposed to on-the-fly transformations that are applied to the original uploaded asset. Eager transformations can be synchronous or asynchronous. Processing an hour long video takes time and many derived videos files are created, so it makes sense for this to be asynchronous. In order to be notified that the entire process is complete, the `eager_notification_url` key is set with a website that can capture and report such notifications. [webhook.site](https://webhook.site) is a website that can capture and report such notifications and it's free to use.
 
-This code uses the [Cloudinary Node.js SDK](https://cloudinary.com/documentation/node_integration). The Node SDK function, `cloudinary.uploader.explicit`, calls upon the [Upload API explicit method ](https://cloudinary.com/documentation/image_upload_api_reference#explicit_method) to act on a previously uploaded Video with the public ID provided as a parameter to the `explicityHDProfile` function.
+This code uses the [Cloudinary Node.js SDK](https://cloudinary.com/documentation/node_integration). The Node SDK function, `cloudinary.uploader.explicit`, calls upon the [Upload API explicit method ](https://cloudinary.com/documentation/image_upload_api_reference#explicit_method) to act on a previously uploaded Video with the public ID provided as a parameter to the `explictHDProfile` function.
 
-The options specify that the asset is a video. The `eager` key provides an array of transformations. The first transformation is a [`streaming_profile`](https://cloudinary.com/documentation/admin_api#adaptive_streaming_profiles), which a is a collection of transformations that can be used to create ABS transformations per the quality indicated (`hd`) and the format (`m3u8`).  
-We also provide transformations for `audio_frequency` of `44100`. This help the audio to match the speaker's lip movement.
+The options specify that the asset is a video. The `eager` key provides an array of transformations. The first transformation is a [`streaming_profile`](https://cloudinary.com/documentation/admin_api#adaptive_streaming_profiles), which is a collection of transformations that can be used to create ABS transformations per the quality indicated (`hd`) and the format (`m3u8`).  
+We also provide transformations for `audio_frequency` of `44100`. This helps the audio to match the speaker's lip movement.
 
-The `type` of `upload` is the default and makes the video assets public. The `invalidate` set to `true` indicates that previously cached versions, if there are any, of these derived files should be invalidates so that they can be replaced.
+The `type` of `upload` is the default and makes the video assets public. The `invalidate` set to `true` indicates that previously cached versions, if there are any, of these derived files should be invalidated so that they can be replaced.
 
 ```JavaScript
 require("dotenv").config();
@@ -145,21 +146,21 @@ function explictHDProfile(publicId) {
 
 ## Web Page Uses Fancybox
 
-The cloudinary.com website using a jQuery library, [Fancybox](http://fancybox.net/) that provides [lightbox](<https://en.wikipedia.org/wiki/Lightbox_(JavaScript)>) functionality.
+The cloudinary.com website uses a jQuery library, [Fancybox](http://fancybox.net/) that provides [lightbox](<https://en.wikipedia.org/wiki/Lightbox_(JavaScript)>) functionality.
 
 The frontend developer, Sean Massa, who worked on this characterized the requirements and solution breakdown like this:
 
 “The challenge for this project was to build a single modal and video player in which the content would dynamically change based on the thumbnail clicked.
 There were many approaches that seemed to work when we were dealing with just a single video implementation, but when it came to reloading the player with a new video on the fly we ran into a few walls along the way, and had to step back and rethink our approach.
-The result was to setup and instance of the player including all parameters and transformations done explicitly through JavaScript, as adding a mix of JS and inline to the player created issues. We then used data attributes to set the poster and source on click of the desired item, the poster also had to be set before the video source or it would not work."
+The result was to setup an instance of the player including all parameters and transformations done explicitly through JavaScript, as adding a mix of JS and inline to the player created issues. We then used data attributes to set the poster and source on click of the desired item, the poster also had to be set before the video source or it would not work."
 
-As, is made clear in the final code for the front end, the goal of creating multiple modal video players on a single pages, was achieved by rendering a single video tag in the Fancybox popup, and then attaching Cloudinary Video Player code and options to this single video tag when the user clicked on a specific video link.
+As is made clear in the final code for the front end, the goal of creating multiple modal video players on a single page, was achieved by rendering a single video tag in the Fancybox popup, and then attaching Cloudinary Video Player code and options to this single video tag when the user clicked on a specific video link.
 
 You can view the stripped down implementation of the solution in the demo linked to in this blog.
 
 ### HTML
 
-You can see that classes have been added to this video tag that are interpreted by the Cloudinary Video Player, such as `cld-fluid`, which will allow the video player to fill it's container.  The `video` tag is located in a single `div` that is rendered but not displayed. It is id'd as `sample-video-id` and this will be used by Cloudinary Video Player to locate the tag. You'll find the tag rendered in your inspector tool, but you wont see it on the web page, until a fancy box link has been clicked.  
+You can see that classes have been added to this video tag that are interpreted by the Cloudinary Video Player, such as `cld-fluid`, which will allow the video player to fill its container.  The `video` tag is located in a single `div` that is rendered but not displayed. It is id'd as `sample-video-id` and this will be used by Cloudinary Video Player to locate the tag. You'll find the tag rendered in your inspector tool, but you won't see it on the web page, until a fancy box link has been clicked.  
 
 ```html
 <div id="video-wrapper" style="display: none">
@@ -171,7 +172,7 @@ You can see that classes have been added to this video tag that are interpreted 
 </div>
 ```
 
-The Cloudinary Video Player code can be accessed using [NPM](npmjs.org), and incorporated into JavaScript Frameworks.  For the podcast web page, we're using jQuery and and fetching all external libraries via CDN.
+The Cloudinary Video Player code can be accessed using [NPM](npmjs.org), and incorporated into JavaScript Frameworks.  For the podcast web page, we're using jQuery and fetching all external libraries via CDN.
 
 ```html
 <script
@@ -201,7 +202,7 @@ The Cloudinary Video Player code can be accessed using [NPM](npmjs.org), and inc
 
 ### Clickable Link for Each Video
 
-Each video that we want to open with the Video Player in the modal is set up with data that provides the Cloudinary public id.  The Cloudinary Video Player can create a poster from a midpoint frame of the video itself.  For the podcast we provide a link to a image on Cloudinary.  The public id and poster link are the only data handed off to the JavaScript that opens the video player.  Notice that there is `video-trigger` class. This will be used to attache a click event.  The `datat-video-id` contains the Cloudinary public id. The `data-video-poster` contains a link to an optimized image on Cloudinary.  The `href` links to the hidden video tag.
+Each video that we want to open with the Video Player in the modal is set up with data that provides the Cloudinary public id.  The Cloudinary Video Player can create a poster from a midpoint frame of the video itself.  For the podcast we provide a link to an image on Cloudinary.  The public id and poster link are the only data handed off to the JavaScript that opens the video player.  Notice that there is a `video-trigger` class. This will be used to attach a click event.  The `data-video-id` contains the Cloudinary public id. The `data-video-poster` contains a link to an optimized image on Cloudinary.  The `href` links to the hidden video tag.
 
 
 
@@ -220,7 +221,7 @@ Each video that we want to open with the Video Player in the modal is set up wit
 
 The JavaScript shown below calls the `fancybox()` function which takes as input all the HTML, JavaScript, and CSS that the Video Player function attaches to the `video` tag.  In order to call the `videoPlayer` function, we need to provide the video tag selector, `sample-video-id`.  We also add a set of options that will instruct the video player to use the `hd` streaming profile and the audio transformation.  The playback rates allow the user to control the speeds at which they stream the video.  
 
-Finally we provide set up a `click` event handler with jQuery.  When the user clicks we pull the public id and the poster data out of the video link and then call the Video Player `source` function to active the video player.
+Finally we provide a `click` event handler with jQuery.  When the user clicks we pull the public id and the poster data out of the video link and then call the Video Player `source` function to activate the video player.
 
 ```javascript
 jQuery(document).ready(function () {
@@ -256,4 +257,4 @@ Page styling is very important in setting up this "multi video player" web page.
 
 ## Summary
 
-There's always a next step in web page development, but its nice to reach a milestone where you can feel confident about a workflow and then focus on the contents of the work.  As more websites embrace video content, we look forward to learning an sharing techniques that enhance the User Experience.
+There is always a next step in web page development, but it's nice to reach a milestone where you can feel confident about a workflow and then focus on the contents of the work.  As more websites embrace video content, we look forward to learning and sharing techniques that enhance the User Experience.  We're alway looking for way to drink the Champagne!
