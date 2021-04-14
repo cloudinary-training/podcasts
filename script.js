@@ -14,7 +14,7 @@ jQuery(document).ready(function () {
     },
     playbackRates: [0.5, 1, 1.5, 2]
   }
-  var media = cloudinaryCld.videoPlayer('video', options);
+  var media = cloudinaryCld.videoPlayer('sample-video-id', options);
   jQuery(document).on("click", ".fancybox.video-trigger", function () {
     var videoID = jQuery(this).data('video-id');
     var videoPoster = jQuery(this).data('video-poster');
