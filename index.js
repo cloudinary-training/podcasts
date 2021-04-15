@@ -5,23 +5,15 @@ function explictHDProfile(publicId) {
   const options = {
     resource_type: "video",
     eager: [
-      { streaming_profile: "hd", format: "m3u8" },
+      { streaming_profile: "podcast_hd_h264", format: "m3u8" },
       {
         format: "mp4",
-        transformation: [{ audio_frequency: 44100 }],
-      },
-      {
-        format: "mp4",
-        transformation: [{ audio_frequency: 44100 }, { video_codec: "h264" }],
-      },
-      {
-        format: "m3u8",
-        transformation: [{ audio_frequency: 44100 }],
+        transformation: [{ audio_frequency: 44100 }, { quality: "auto" }],
       },
     ],
     eager_async: true,
     eager_notification_url:
-      "https://webhook.site",
+      "https://webhook.site/20d13ebe-105c-4f04-9719-7e1e55f6ad94",
     type: "upload",
     invalidate: true,
   };
@@ -30,6 +22,10 @@ function explictHDProfile(publicId) {
     else console.log(result);
   });
 }
-
-explictHDProfile("beverly-hillbillies");
+// 
+explictHDProfile("test-af");
+explictHDProfile("beverly-hillbilies");
+explictHDProfile("newsreel");
+explictHDProfile("skating");
+explictHDProfile("climbing");
 

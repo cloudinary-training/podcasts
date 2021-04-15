@@ -4,7 +4,8 @@
   "description": "files needed to create ABS transformations and test",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "process": "node index.js"
   },
   "repository": {
     "type": "git",
