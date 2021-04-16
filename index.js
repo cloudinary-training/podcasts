@@ -23,9 +23,10 @@ function explictHDProfile(publicId) {
   });
 }
 // 
-explictHDProfile("test-af");
-explictHDProfile("beverly-hillbilies");
-explictHDProfile("newsreel");
-explictHDProfile("skating");
-explictHDProfile("climbing");
+// explictHDProfile("test-af");
+// explictHDProfile("beverly-hillbilies");
+// explictHDProfile("newsreel");
+// explictHDProfile("skating");
+// explictHDProfile("climbing");
+explictHDProfile("fireball");
 
