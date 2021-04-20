@@ -1,7 +1,7 @@
 require("dotenv").config();
 const cloudinary = require("cloudinary").v2;
 
-function explictHDProfile(publicId) {
+function explicitPodcastProfile(publicId) {
   const options = {
     resource_type: "video",
     eager: [
@@ -22,11 +22,6 @@ function explictHDProfile(publicId) {
     else console.log(result);
   });
 }
-// 
-// explictHDProfile("test-af");
-// explictHDProfile("beverly-hillbilies");
-// explictHDProfile("newsreel");
-// explictHDProfile("skating");
-// explictHDProfile("climbing");
-explictHDProfile("fireball");
+
+explicitPodcastProfile("public_id")
 
