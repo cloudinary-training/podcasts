@@ -101,11 +101,10 @@
           cloud_name: "cloudinary-training",
         });
         var options = {
-          sourceTypes: ["hls", "mp4"],
+          sourceTypes: ["mp4"],
           bigPlayButton: "init",
           muted: false,
           sourceTransformation: {
-            hls: [{ streaming_profile: "hd" }],
             mp4: [{ quality: "auto" }],
           },
           playbackRates: [0.5, 1, 1.5, 2],
@@ -121,4 +120,3 @@
     </script>
   </body>
 </html>
-

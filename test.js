@@ -23,4 +23,4 @@ function explicitPodcastProfile(publicId) {
   });
 }
 
-explicitPodcastProfile("podcasts/blog/mxmatters-yaron-jan2021-ready_s8jt9o");
+explicitPodcastProfile("podcasts/blog/tutorial-adobecc-connector-withwav_nnxlu4");
