@@ -7,7 +7,7 @@ jQuery(document).ready(function () {
   var options = {
     sourceTypes: ["hls", "mp4"],
     bigPlayButton: "init",
-    muted: true,
+    muted: false,
     sourceTransformation: {
       hls: [{ streaming_profile: "podcast_hd_h264" }],
       mp4: [{ audio_frequency: 44100 }, { quality: "auto" }],
