@@ -31,8 +31,6 @@
       type="text/javascript"
     ></script>
 
-  
-
     <script src="script.js"></script>
 
     <title>ABS + Fancy Box</title>
@@ -59,65 +57,44 @@
   </head>
 
   <body>
-    <div id="list" class="items flex">
-      <div class="item">
-        <div class="wrapper">
-          <div class="media">
-            <div class="image">
-              <div>
-                <a
-                  class="fancybox video-trigger"
-                  href="#video-wrapper"
-                  data-video-id="podcasts/blog/climbing"
-                  data-video-poster="https://res.cloudinary.com/cloudinary-training/image/upload/w_800,h_450,c_pad,b_auto/podcasts/blog/clockface.jpg"
-                >
-                  Watch climbing here
-                </a>
-              </div>
-              <div>
-                <a
-                  class="fancybox video-trigger"
-                  href="#video-wrapper"
-                  data-video-id="podcasts/blog/skating"
-                  data-video-poster="https://res.cloudinary.com/cloudinary-training/image/upload/w_800,h_450,c_pad,b_auto/podcasts/blog/clockface.jpg"
-                >
-                  Watch skating here
-                </a>
-              </div>
-            
-              <div>
-                <a
-                  class="fancybox video-trigger"
-                  href="#video-wrapper"
-                  data-video-id="podcasts/blog/fireball"
-                  data-video-poster="https://res.cloudinary.com/cloudinary-training/image/upload/w_800,h_450,c_pad,b_auto/podcasts/blog/clockface.jpg"
-                >
-                  Fireball
-                </a>
-              </div>
-				
-            </div>
-          </div>
-        </div>
-      </div>
+    <div>
+      <a
+        class="fancybox video-trigger"
+        href="#video-wrapper"
+        data-video-id="podcasts/blog/climbing"
+        data-video-poster="https://res.cloudinary.com/cloudinary-training/image/upload/w_800,h_450,c_pad,b_auto/podcasts/blog/clockface.jpg"
+      >
+        Watch climbing here
+      </a>
+    </div>
+    <div>
+      <a
+        class="fancybox video-trigger"
+        href="#video-wrapper"
+        data-video-id="podcasts/blog/skating"
+        data-video-poster="https://res.cloudinary.com/cloudinary-training/image/upload/w_800,h_450,c_pad,b_auto/podcasts/blog/clockface.jpg"
+      >
+        Watch skating here
+      </a>
     </div>
 
-    <div class="general-content-mod" style="background-color: #eeeef1">
-      <div class="container">
-        <div class="row">
-          <div class="col-xs-12 col-sm-5">
-            <div id="video-wrapper" style="display: none">
-              <video
-                id="sample-video-id"
-                class="cloudinary-video cld-video-player cld-video-player-skin-dark cld-fluid controls"
-                controls
-              ></video>
-            </div>
-          </div>
-        </div>
-      </div>
+    <div>
+      <a
+        class="fancybox video-trigger"
+        href="#video-wrapper"
+        data-video-id="podcasts/blog/fireball"
+        data-video-poster="https://res.cloudinary.com/cloudinary-training/image/upload/w_800,h_450,c_pad,b_auto/podcasts/blog/clockface.jpg"
+      >
+        Fireball
+      </a>
+    </div>
+
+    <div id="video-wrapper" style="display: none">
+      <video
+        id="sample-video-id"
+        class="cloudinary-video cld-video-player cld-video-player-skin-dark cld-fluid controls"
+        controls
+      ></video>
     </div>
   </body>
 </html>
-
-

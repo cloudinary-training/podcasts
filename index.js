@@ -1,14 +1,17 @@
 require("dotenv").config();
 const cloudinary = require("cloudinary").v2;
+console.log(cloudinary.config().cloud_name);
 
-function explicitPodcastProfile(publicId) {
+// use explicit because upload takes place at a different
+// time and is performed by a different person
+function explictHDProfile(publicId) {
   const options = {
     resource_type: "video",
     eager: [
-      { streaming_profile: "podcast_hd_h264", format: "m3u8" },
+      { streaming_profile: "hd", format: "m3u8" },
       {
         format: "mp4",
-        transformation: [{ audio_frequency: 44100 }, { quality: "auto" }],
+        transformation: [{ quality: "auto" }],
       },
     ],
     eager_async: true,
@@ -23,5 +26,4 @@ function explicitPodcastProfile(publicId) {
   });
 }
 
-explicitPodcastProfile("public_id")
-
+explictHDProfile("podcast/mx_matters/mx-matters-episode5-Contentful_Drft02")

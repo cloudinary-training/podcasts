@@ -1,3 +1,4 @@
 .env
 publicids.txt
 *.mp4
+test/

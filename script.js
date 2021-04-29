@@ -9,8 +9,8 @@ jQuery(document).ready(function () {
     bigPlayButton: "init",
     muted: false,
     sourceTransformation: {
-      hls: [{ streaming_profile: "podcast_hd_h264" }],
-      mp4: [{ audio_frequency: 44100 }, { quality: "auto" }],
+      "hls": [{ streaming_profile: "hd" }],
+      "mp4": [{ quality: "auto" }],
     },
     playbackRates: [0.5, 1, 1.5, 2],
   };
